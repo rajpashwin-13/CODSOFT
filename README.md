@@ -17,12 +17,16 @@ Predicts the genre of the movie based on its plot description.
 ## Tools Used
 
 1.Python
-2.Pandas
-3.Scikit-learn
-4.Matplotlib
-5.Seaborn
-6'Jupyter Notebook
 
+2.Pandas
+
+3.Scikit-learn
+
+4.Matplotlib
+
+5.Seaborn
+
+6.Jupyter Notebook
 
 
 ##  Author
