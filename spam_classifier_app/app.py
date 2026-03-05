@@ -30,12 +30,15 @@ def load_model():
 
 model, vectorizer = load_model()
 
+
+
 st.title("SMS Spam Classifier")
 st.write("Enter a message to check whether it is Spam or Ham")
 
 user_input = st.text_area("Enter SMS here")
 
 if st.button("Predict"):
+
     if user_input.strip() == "":
         st.warning("Please enter a message")
     else:
