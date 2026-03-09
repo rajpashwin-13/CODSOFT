@@ -1,5 +1,8 @@
+from importlib.resources import path
+
 import streamlit as st
 import pandas as pd
+import os
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -7,7 +10,8 @@ from sklearn.naive_bayes import MultinomialNB
 
 @st.cache_resource
 def load_model():
-    df = pd.read_csv("spam.csv", encoding="latin-1")
+    path = os.path.join(os.path.dirname(__file__), "spam.csv")
+    df = pd.read_csv(path, encoding="latin-1")
     df = df[['v1', 'v2']]
     df.columns = ['label', 'message']
 
