@@ -30,8 +30,6 @@ def load_model():
 
 model, vectorizer = load_model()
 
-
-
 st.title("SMS Spam Classifier")
 st.write("Enter a message to check whether it is Spam or Ham")
 
