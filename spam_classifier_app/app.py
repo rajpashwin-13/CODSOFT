@@ -36,18 +36,7 @@ model, vectorizer = load_model()
 st.title("SMS Spam Classifier")
 st.write("Enter a message to check whether it is Spam or Ham")
 
-st.markdown("Try Example Messages")
-example = st.selectbox(
-    "Choose an example",
-    [
-        "Congratulations! You won a free lottery ticket",
-        "Your OTP is required to verify bank account",
-        "Hey bro are we meeting today?",
-        "Free entry in a prize draw claim now"
-    ]
-)
-
-user_input = st.text_area("Enter SMS here", value=example)
+user_input = st.text_area("Enter SMS here")
 if st.button("Predict"):
 
     if user_input.strip() == "":
