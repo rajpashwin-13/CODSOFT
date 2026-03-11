@@ -1,5 +1,4 @@
 from importlib.resources import path
-
 import streamlit as st
 import pandas as pd
 import os
@@ -37,8 +36,18 @@ model, vectorizer = load_model()
 st.title("SMS Spam Classifier")
 st.write("Enter a message to check whether it is Spam or Ham")
 
-user_input = st.text_area("Enter SMS here")
+st.markdown("Try Example Messages")
+example = st.selectbox(
+    "Choose an example",
+    [
+        "Congratulations! You won a free lottery ticket",
+        "Your OTP is required to verify bank account",
+        "Hey bro are we meeting today?",
+        "Free entry in a prize draw claim now"
+    ]
+)
 
+user_input = st.text_area("Enter SMS here", value=example)
 if st.button("Predict"):
 
     if user_input.strip() == "":
@@ -47,8 +56,12 @@ if st.button("Predict"):
         cleaned = re.sub(r'[^a-z0-9\s]', '', user_input.lower())
         vectorized = vectorizer.transform([cleaned])
         prediction = model.predict(vectorized)
+        prob = model.predict_proba(vectorized)
 
         if prediction[0] == 1:
             st.error("This is a SPAM message!")
+            st.write(f"Spam Probability: {prob[0][1]*100:.2f}%")
+
         else:
             st.success("This is a HAM message!")
+            st.write(f"Ham Probability: {prob[0][0]*100:.2f}%")
